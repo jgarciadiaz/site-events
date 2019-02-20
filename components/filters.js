@@ -10,6 +10,15 @@ const weatherStyle = {
   color: '#999'
 }
 
+function displayTemperature(weather) {
+  if (weather && weather.fahrenheit) {
+    return <BottomNavigationItem
+      icon={<span style={weatherStyle}>{weather && weather.fahrenheit} &deg;F</span>}
+    />
+  }
+  return <span></span>
+}
+
 export default ({ selectedIndex, clickHandler, weather }) => (
   <BottomNavigation selectedIndex={selectedIndex}>
     <BottomNavigationItem
@@ -24,8 +33,6 @@ export default ({ selectedIndex, clickHandler, weather }) => (
       icon={<ActionGrade color={getItemColor(2, selectedIndex)} />}
       onClick={() => clickHandler(2)}
     />
-    <BottomNavigationItem
-      icon={<span style={weatherStyle}>{weather && weather.fahrenheit} &deg;F</span>}
-    />
+    { displayTemperature(weather)}
   </BottomNavigation>
 )
