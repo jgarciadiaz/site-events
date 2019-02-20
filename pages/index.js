@@ -6,6 +6,9 @@ import 'isomorphic-unfetch'
 import Layout from '../components/layout'
 import Filters from '../components/filters'
 import Event from '../components/event'
+import Ads from '../components/ads'
+
+const ads_index = 3
 
 export default class extends React.Component {
 
@@ -31,15 +34,29 @@ export default class extends React.Component {
 
   setFilterIndex = index => this.setState({ selectedIndex: index })
 
+  printCard(event, index) {
+    if (index === ads_index) {
+      const data = {
+        uuid: 'ads-uuid',
+        title: 'ads title',
+        description: 'ads description',
+        url: '/',
+        image: '/static/ads.png'
+      }
+      return <Ads data={data} key={data.uuid} ></Ads>
+    }
+    return <Event event={event} key={event.uuid}></Event>
+  }
+
   renderEvents(selectedIndex) {
     const { events, weather } = this.props
     if (events.length) {
       if (!selectedIndex) {
-        return events.map(event => <Event event={event} key={event.uuid} />)
+        return events.map(this.printCard)
       }
       return events
         .filter(event => event.score === selectedIndex - 1)
-        .map(event => <Event event={event} key={event.uuid} />)
+        .map(this.printCard)
     }
     return null
   }

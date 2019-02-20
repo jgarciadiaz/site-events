@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Head from 'next/head'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
