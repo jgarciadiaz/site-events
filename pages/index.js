@@ -10,6 +10,17 @@ import Ads from '../components/ads'
 
 const ads_index = 3
 
+function getAds() {
+  const data = {
+    uuid: 'ads-uuid',
+    title: 'ads title',
+    description: 'ads description',
+    url: '/',
+    image: '/static/ads.png'
+  }
+  return <Ads data={data} key={data.uuid}></Ads>
+}
+
 export default class extends React.Component {
 
   static async getInitialProps({ req }) {
@@ -35,29 +46,24 @@ export default class extends React.Component {
   setFilterIndex = index => this.setState({ selectedIndex: index })
 
   printCard(event, index) {
+    const result = []
     if (index === ads_index) {
-      const data = {
-        uuid: 'ads-uuid',
-        title: 'ads title',
-        description: 'ads description',
-        url: '/',
-        image: '/static/ads.png'
-      }
-      return <Ads data={data} key={data.uuid} ></Ads>
+      result.push(getAds())
     }
-    return <Event event={event} key={event.uuid}></Event>
+    result.push(<Event event={event} key={event.uuid}></Event>)
+
+    return result
   }
 
   renderEvents(selectedIndex) {
     const { events, weather } = this.props
+
     if (events.length) {
-      if (!selectedIndex) {
-        return events.map(this.printCard)
-      }
       return events
-        .filter(event => event.score === selectedIndex - 1)
+        .filter(event => !selectedIndex || event.score === selectedIndex - 1)
         .map(this.printCard)
     }
+
     return null
   }
 

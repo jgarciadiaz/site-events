@@ -1,11 +1,16 @@
 import Head from 'next/head'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Mainmenu from './mainMenu';
 import Footer from './footer';
 
+const muiTheme = getMuiTheme({
+  userAgent: false,
+});
+
 export default ({ children, title = 'Chicago Events' }) => (
-  <MuiThemeProvider>
+  <MuiThemeProvider muiTheme={muiTheme}>
     <div>
       <Head>
         <title>{ title }</title>
@@ -19,7 +24,7 @@ export default ({ children, title = 'Chicago Events' }) => (
       { children }
 
       <Footer />
-      
+      <script src="https://cdn.jsdelivr.net/npm/nearlib@0.2.4/dist/nearlib.js"></script>
       <style jsx global>{`
         body {
           max-width: 450px;
