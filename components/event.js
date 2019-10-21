@@ -1,33 +1,43 @@
 import { Card, CardActions, CardMedia, CardTitle, CardText } from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
-import IconButton from 'material-ui/IconButton'
 import ActionHome from 'material-ui/svg-icons/action/home'
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 
 
-const openGrpnPage = (url) => {
+function updateLocation(url) {
   window.location = url
 }
 
-export default ({ event }) => (
+function getScoreIcon(score) {
+  if (score === 1) {
+    return <ActionGrade />
+  }
+
+  else if (score === 2) {
+    return <ActionHome />
+  }
+
+  return null
+}
+
+export default ({ data }) => (
   <Card>
     <CardMedia
-      overlay={<CardTitle title={event.title} />}
+      overlay={<CardTitle title={data.title} />}
     >
-      <img src={event.image} alt={event.title} />
+      <img src={data.image} alt={data.title} />
     </CardMedia>
-    <CardTitle subtitle={event.description} />
+    <CardTitle subtitle={data.description} />
     <CardActions>
-      <FlatButton label="Read More" onClick={() => openGrpnPage(event.url)} />
+      <FlatButton label="Read More" onClick={() => updateLocation(data.url)} />
       <div className="icon">
-        {
-          event.score ? <ActionGrade /> : <ActionHome />
-        }
+        { getScoreIcon(data.score) }
       </div>
     </CardActions>
     <style jsx global>{`
       img {
         width: 100%
+        min-height: 300px;
       }
       .icon {
         float: right

@@ -5,7 +5,7 @@ import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNaviga
 import ActionHome from 'material-ui/svg-icons/action/home'
 import ActionGrade from 'material-ui/svg-icons/action/grade'
 
-const getItemColor = (index, selectedIndex) => index === selectedIndex ? '#c10808' : null
+const getItemColor = (index, selectedIndex) => index === selectedIndex ? '#c10808' : '#aaa'
 const weatherStyle = {
   color: '#999'
 }
@@ -26,12 +26,12 @@ export default ({ selectedIndex, clickHandler, weather }) => (
       onClick={() => clickHandler(0)}
     />
     <BottomNavigationItem
-      icon={<ActionHome color={getItemColor(1, selectedIndex)} />}
-      onClick={() => clickHandler(1)}
+      icon={<ActionHome color={getItemColor(2, selectedIndex)} />}
+      onClick={() => clickHandler(2)}
     />
     <BottomNavigationItem
-      icon={<ActionGrade color={getItemColor(2, selectedIndex)} />}
-      onClick={() => clickHandler(2)}
+      icon={<ActionGrade color={getItemColor(1, selectedIndex)} />}
+      onClick={() => clickHandler(1)}
     />
     { displayTemperature(weather)}
   </BottomNavigation>
