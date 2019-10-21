@@ -24,7 +24,8 @@ export default ({ children, title = 'Chicago Events' }) => (
       { children }
 
       <Footer />
-      <script src="https://cdn.jsdelivr.net/npm/nearlib@0.2.4/dist/nearlib.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/nearlib@0.14.1/dist/nearlib.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
       <style>{`
         body {
           max-width: 450px;
