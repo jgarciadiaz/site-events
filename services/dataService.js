@@ -26,7 +26,7 @@ function getAds() {
     title: 'ads title',
     description: 'ads description',
     url: '/',
-    image: '/static/ads.png',
+    image: '/ads.png',
     type: 'ads'
   }
 }
