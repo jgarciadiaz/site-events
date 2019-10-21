@@ -34,7 +34,7 @@ export default ({ data }) => (
         { getScoreIcon(data.score) }
       </div>
     </CardActions>
-    <style jsx global>{`
+    <style>{`
       img {
         width: 100%
         min-height: 300px;

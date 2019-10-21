@@ -25,7 +25,7 @@ export default ({ children, title = 'Chicago Events' }) => (
 
       <Footer />
       <script src="https://cdn.jsdelivr.net/npm/nearlib@0.2.4/dist/nearlib.js"></script>
-      <style jsx global>{`
+      <style>{`
         body {
           max-width: 450px;
           margin: 0 auto;
