@@ -2,7 +2,7 @@ import { Card, CardActions, CardMedia, CardTitle, CardText } from 'material-ui/C
 import FlatButton from 'material-ui/FlatButton'
 import ActionHome from 'material-ui/svg-icons/action/home'
 import ActionGrade from 'material-ui/svg-icons/action/grade';
-
+import LazyLoad from 'react-lazyload';
 
 function updateLocation(url) {
   window.location = url
@@ -25,7 +25,9 @@ export default ({ data }) => (
     <CardMedia
       overlay={<CardTitle title={data.title} />}
     >
-      <img src={data.image} alt={data.title} />
+      <LazyLoad height={200}>
+        <img src={data.image} alt={data.title} />
+      </LazyLoad>
     </CardMedia>
     <CardTitle subtitle={data.description} />
     <CardActions>
